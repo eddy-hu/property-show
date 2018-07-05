@@ -4,4 +4,5 @@
 .mvn
 .classpath
 bin/
+build/
 .project
