@@ -1,3 +1,4 @@
+/*
 package com.jessienwei.web.dto;
 
 import javax.validation.constraints.NotEmpty;
@@ -64,4 +65,4 @@ public class UserDTO {
 				+ ", matchingPassword=" + matchingPassword + ", email=" + email + "]";
 	}
 
-}
+}  */
