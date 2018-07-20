@@ -1,4 +1,7 @@
 buildscript {
+    ext {
+		springBootVersion = '2.0.3.RELEASE'
+	}
     repositories {
         mavenCentral()
     }
@@ -32,7 +35,6 @@ dependencies {
     compile("org.springframework.boot:spring-boot-devtools")
     compile("org.springframework.boot:spring-boot-starter-security")
     compile("org.springframework.boot:spring-boot-starter-data-jpa")
-    // Use MySQL Connector-J
     compile ("mysql:mysql-connector-java")
     testCompile("junit:junit")
     testCompile("org.springframework.boot:spring-boot-starter-test")
