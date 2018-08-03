@@ -1,0 +1,255 @@
+!SESSION 2018-07-20 22:32:50.673 -----------------------------------------------
+eclipse.buildId=4.7.3.M20180330-0640
+java.version=1.8.0_162
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
+
+This is a continuation of log file D:\Documents\property-show\.metadata\.bak_0.log
+Created Time: 2018-07-20 22:33:26.406
+
+!ENTRY org.eclipse.ui 2 0 2018-07-20 22:33:26.414
+!MESSAGE Warnings while parsing the images from the 'org.eclipse.ui.commandImages' extension point.
+!SUBENTRY 1 org.eclipse.ui 2 0 2018-07-20 22:33:26.414
+!MESSAGE Cannot bind to an undefined command: plug-in='org.eclipse.lsp4e', id='org.eclipse.lsp4e.togglehighlight'
+
+!ENTRY org.eclipse.jface 2 0 2018-07-20 22:33:35.902
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2018-07-20 22:33:35.902
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@5978ba12,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@43f5b014,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-07-20 22:33:45.852
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\rainy'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.apache.log4j 2 0 2018-07-20 22:36:04.455
+!MESSAGE org.eclipse.jetty.server.HttpChannel  - /help/advanced/searchView.jsp
+
+!STACK 0
+org.apache.jasper.JasperException: org.eclipse.jetty.io.RuntimeIOException: org.eclipse.jetty.io.EofException
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:432)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:492)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:378)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790)
+	at org.eclipse.equinox.jsp.jasper.JspServlet.service(JspServlet.java:155)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790)
+	at org.eclipse.equinox.http.registry.internal.ServletManager$ServletWrapper.service(ServletManager.java:180)
+	at org.eclipse.equinox.http.servlet.internal.HttpServiceRuntimeImpl$LegacyServlet.service(HttpServiceRuntimeImpl.java:1223)
+	at org.eclipse.equinox.http.servlet.internal.registration.EndpointRegistration.service(EndpointRegistration.java:148)
+	at org.eclipse.equinox.http.servlet.internal.servlet.ResponseStateHandler.processRequest(ResponseStateHandler.java:62)
+	at org.eclipse.equinox.http.servlet.internal.context.DispatchTargets.doDispatch(DispatchTargets.java:131)
+	at org.eclipse.equinox.http.servlet.internal.servlet.ProxyServlet.service(ProxyServlet.java:74)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790)
+	at org.eclipse.equinox.http.jetty.internal.HttpServerManager$InternalHttpServiceServlet.service(HttpServerManager.java:284)
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:860)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:535)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:188)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1595)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:188)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1253)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:168)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:473)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1564)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:166)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1155)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:530)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:347)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:256)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:279)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:102)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:247)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:140)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:131)
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:382)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:708)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:626)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: org.eclipse.jetty.io.RuntimeIOException: org.eclipse.jetty.io.EofException
+	at org.eclipse.jetty.server.ResponseWriter.isOpen(ResponseWriter.java:133)
+	at org.eclipse.jetty.server.ResponseWriter.write(ResponseWriter.java:202)
+	at java.io.PrintWriter.write(Unknown Source)
+	at org.eclipse.equinox.http.servlet.internal.servlet.HttpServletResponseWrapperImpl$InternalWriter.write(HttpServletResponseWrapperImpl.java:176)
+	at org.apache.jasper.runtime.JspWriterImpl.flushBuffer(JspWriterImpl.java:185)
+	at org.apache.jasper.runtime.JspWriterImpl.write(JspWriterImpl.java:458)
+	at org.apache.jasper.runtime.JspWriterImpl.write(JspWriterImpl.java:471)
+	at org.apache.jsp.advanced.searchView_jsp._jspService(org.apache.jsp.advanced.searchView_jsp:459)
+	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:111)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:403)
+	... 39 more
+Caused by: org.eclipse.jetty.io.EofException
+	at org.eclipse.jetty.io.ChannelEndPoint.flush(ChannelEndPoint.java:292)
+	at org.eclipse.jetty.io.WriteFlusher.flush(WriteFlusher.java:429)
+	at org.eclipse.jetty.io.WriteFlusher.write(WriteFlusher.java:322)
+	at org.eclipse.jetty.io.AbstractEndPoint.write(AbstractEndPoint.java:372)
+	at org.eclipse.jetty.server.HttpConnection$SendCallback.process(HttpConnection.java:788)
+	at org.eclipse.jetty.util.IteratingCallback.processing(IteratingCallback.java:241)
+	at org.eclipse.jetty.util.IteratingCallback.iterate(IteratingCallback.java:224)
+	at org.eclipse.jetty.server.HttpConnection.send(HttpConnection.java:528)
+	at org.eclipse.jetty.server.HttpChannel.sendResponse(HttpChannel.java:778)
+	at org.eclipse.jetty.server.HttpChannel.write(HttpChannel.java:834)
+	at org.eclipse.jetty.server.HttpOutput.write(HttpOutput.java:234)
+	at org.eclipse.jetty.server.HttpOutput.write(HttpOutput.java:218)
+	at org.eclipse.jetty.server.HttpOutput.write(HttpOutput.java:509)
+	at java.io.ByteArrayOutputStream.writeTo(Unknown Source)
+	at org.eclipse.jetty.server.Utf8HttpWriter.write(Utf8HttpWriter.java:183)
+	at org.eclipse.jetty.server.ResponseWriter.write(ResponseWriter.java:203)
+	at java.io.PrintWriter.write(Unknown Source)
+	at org.eclipse.equinox.http.servlet.internal.servlet.HttpServletResponseWrapperImpl$InternalWriter.write(HttpServletResponseWrapperImpl.java:176)
+	at org.apache.jasper.runtime.JspWriterImpl.flushBuffer(JspWriterImpl.java:185)
+	at org.apache.jasper.runtime.JspWriterImpl.write(JspWriterImpl.java:458)
+	at org.apache.jasper.runtime.JspWriterImpl.write(JspWriterImpl.java:471)
+	at org.apache.jsp.advanced.searchView_jsp._jspService(org.apache.jsp.advanced.searchView_jsp:499)
+	... 42 more
+Caused by: java.io.IOException: An existing connection was forcibly closed by the remote host
+	at sun.nio.ch.SocketDispatcher.writev0(Native Method)
+	at sun.nio.ch.SocketDispatcher.writev(Unknown Source)
+	at sun.nio.ch.IOUtil.write(Unknown Source)
+	at sun.nio.ch.SocketChannelImpl.write(Unknown Source)
+	at org.eclipse.jetty.io.ChannelEndPoint.flush(ChannelEndPoint.java:272)
+	... 63 more
+
+!ENTRY org.apache.log4j 2 0 2018-07-20 22:36:04.476
+!MESSAGE org.eclipse.jetty.server.HttpChannel  - /help/advanced/searchView.jsp
+
+!STACK 0
+org.apache.jasper.JasperException: org.eclipse.jetty.io.RuntimeIOException: org.eclipse.jetty.io.EofException
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:432)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:492)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:378)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790)
+	at org.eclipse.equinox.jsp.jasper.JspServlet.service(JspServlet.java:155)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790)
+	at org.eclipse.equinox.http.registry.internal.ServletManager$ServletWrapper.service(ServletManager.java:180)
+	at org.eclipse.equinox.http.servlet.internal.HttpServiceRuntimeImpl$LegacyServlet.service(HttpServiceRuntimeImpl.java:1223)
+	at org.eclipse.equinox.http.servlet.internal.registration.EndpointRegistration.service(EndpointRegistration.java:148)
+	at org.eclipse.equinox.http.servlet.internal.servlet.ResponseStateHandler.processRequest(ResponseStateHandler.java:62)
+	at org.eclipse.equinox.http.servlet.internal.context.DispatchTargets.doDispatch(DispatchTargets.java:131)
+	at org.eclipse.equinox.http.servlet.internal.servlet.ProxyServlet.service(ProxyServlet.java:74)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790)
+	at org.eclipse.equinox.http.jetty.internal.HttpServerManager$InternalHttpServiceServlet.service(HttpServerManager.java:284)
+	at org.eclipse.jetty.servlet.ServletHolder.handle(ServletHolder.java:860)
+	at org.eclipse.jetty.servlet.ServletHandler.doHandle(ServletHandler.java:535)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:188)
+	at org.eclipse.jetty.server.session.SessionHandler.doHandle(SessionHandler.java:1595)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextHandle(ScopedHandler.java:188)
+	at org.eclipse.jetty.server.handler.ContextHandler.doHandle(ContextHandler.java:1253)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:168)
+	at org.eclipse.jetty.servlet.ServletHandler.doScope(ServletHandler.java:473)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:1564)
+	at org.eclipse.jetty.server.handler.ScopedHandler.nextScope(ScopedHandler.java:166)
+	at org.eclipse.jetty.server.handler.ContextHandler.doScope(ContextHandler.java:1155)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:132)
+	at org.eclipse.jetty.server.Server.handle(Server.java:530)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:347)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:256)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:279)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:102)
+	at org.eclipse.jetty.io.ChannelEndPoint$2.run(ChannelEndPoint.java:124)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.doProduce(EatWhatYouKill.java:247)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.produce(EatWhatYouKill.java:140)
+	at org.eclipse.jetty.util.thread.strategy.EatWhatYouKill.run(EatWhatYouKill.java:131)
+	at org.eclipse.jetty.util.thread.ReservedThreadExecutor$ReservedThread.run(ReservedThreadExecutor.java:382)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:708)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:626)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: org.eclipse.jetty.io.RuntimeIOException: org.eclipse.jetty.io.EofException
+	at org.eclipse.jetty.server.ResponseWriter.isOpen(ResponseWriter.java:133)
+	at org.eclipse.jetty.server.ResponseWriter.write(ResponseWriter.java:202)
+	at java.io.PrintWriter.write(Unknown Source)
+	at org.eclipse.equinox.http.servlet.internal.servlet.HttpServletResponseWrapperImpl$InternalWriter.write(HttpServletResponseWrapperImpl.java:176)
+	at org.apache.jasper.runtime.JspWriterImpl.flushBuffer(JspWriterImpl.java:185)
+	at org.apache.jasper.runtime.JspWriterImpl.write(JspWriterImpl.java:458)
+	at org.apache.jasper.runtime.JspWriterImpl.write(JspWriterImpl.java:471)
+	at org.apache.jsp.advanced.searchView_jsp._jspService(org.apache.jsp.advanced.searchView_jsp:459)
+	at org.apache.jasper.runtime.HttpJspBase.service(HttpJspBase.java:111)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:790)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:403)
+	... 39 more
+Caused by: org.eclipse.jetty.io.EofException
+	at org.eclipse.jetty.io.ChannelEndPoint.flush(ChannelEndPoint.java:292)
+	at org.eclipse.jetty.io.WriteFlusher.flush(WriteFlusher.java:429)
+	at org.eclipse.jetty.io.WriteFlusher.write(WriteFlusher.java:322)
+	at org.eclipse.jetty.io.AbstractEndPoint.write(AbstractEndPoint.java:372)
+	at org.eclipse.jetty.server.HttpConnection$SendCallback.process(HttpConnection.java:788)
+	at org.eclipse.jetty.util.IteratingCallback.processing(IteratingCallback.java:241)
+	at org.eclipse.jetty.util.IteratingCallback.iterate(IteratingCallback.java:224)
+	at org.eclipse.jetty.server.HttpConnection.send(HttpConnection.java:528)
+	at org.eclipse.jetty.server.HttpChannel.sendResponse(HttpChannel.java:778)
+	at org.eclipse.jetty.server.HttpChannel.write(HttpChannel.java:834)
+	at org.eclipse.jetty.server.HttpOutput.write(HttpOutput.java:234)
+	at org.eclipse.jetty.server.HttpOutput.write(HttpOutput.java:218)
+	at org.eclipse.jetty.server.HttpOutput.write(HttpOutput.java:509)
+	at java.io.ByteArrayOutputStream.writeTo(Unknown Source)
+	at org.eclipse.jetty.server.Utf8HttpWriter.write(Utf8HttpWriter.java:183)
+	at org.eclipse.jetty.server.ResponseWriter.write(ResponseWriter.java:203)
+	at java.io.PrintWriter.write(Unknown Source)
+	at org.eclipse.equinox.http.servlet.internal.servlet.HttpServletResponseWrapperImpl$InternalWriter.write(HttpServletResponseWrapperImpl.java:176)
+	at org.apache.jasper.runtime.JspWriterImpl.flushBuffer(JspWriterImpl.java:185)
+	at org.apache.jasper.runtime.JspWriterImpl.write(JspWriterImpl.java:458)
+	at org.apache.jasper.runtime.JspWriterImpl.write(JspWriterImpl.java:471)
+	at org.apache.jsp.advanced.searchView_jsp._jspService(org.apache.jsp.advanced.searchView_jsp:499)
+	... 42 more
+Caused by: java.io.IOException: An existing connection was forcibly closed by the remote host
+	at sun.nio.ch.SocketDispatcher.writev0(Native Method)
+	at sun.nio.ch.SocketDispatcher.writev(Unknown Source)
+	at sun.nio.ch.IOUtil.write(Unknown Source)
+	at sun.nio.ch.SocketChannelImpl.write(Unknown Source)
+	at org.eclipse.jetty.io.ChannelEndPoint.flush(ChannelEndPoint.java:272)
+	... 63 more
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2018-07-20 22:42:21.578
+!MESSAGE Server returned lastModified <= 0 for http://downloads.myeclipseide.com/downloads/products/eworkbench/7.0M1/MyEclipse_7.0M1_E3.4.0_Installer.exe/content.jar
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1002 2018-07-20 22:42:24.372
+!MESSAGE Unable to read repository at http://downloads.myeclipseide.com/downloads/products/eworkbench/7.0M1/MyEclipse_7.0M1_E3.4.0_Installer.exe.
+!STACK 0
+java.io.IOException: http://downloads.myeclipseide.com/downloads/products/eworkbench/7.0M1/MyEclipse_7.0M1_E3.4.0_Installer.exe is not a valid repository location.
+	at org.eclipse.equinox.internal.p2.metadata.repository.SimpleMetadataRepositoryFactory.load(SimpleMetadataRepositoryFactory.java:102)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:668)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:152)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:130)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:74)
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-07-20 22:43:24.391
+!MESSAGE No repository found at http://downloads.myeclipseide.com/downloads/products.
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2018-07-20 22:43:41.395
+!MESSAGE Server returned lastModified <= 0 for http://downloads.myeclipseide.com/downloads/products/eworkbench/7.0M1/MyEclipse_7.0M1_E3.4.0_Installer.exe/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2018-07-20 22:43:46.837
+!MESSAGE Server returned lastModified <= 0 for http://downloads.myeclipseide.com/downloads/products/eworkbench/7.0M1/MyEclipse_7.0M1_E3.4.0_Installer.exe/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2018-07-20 22:43:52.141
+!MESSAGE Server returned lastModified <= 0 for http://downloads.myeclipseide.com/downloads/products/eworkbench/7.0M1/MyEclipse_7.0M1_E3.4.0_Installer.exe/content.jar
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2018-07-20 22:43:57.768
+!MESSAGE Server returned lastModified <= 0 for http://downloads.myeclipseide.com/downloads/products/eworkbench/7.0M1/MyEclipse_7.0M1_E3.4.0_Installer.exe/content.jar
