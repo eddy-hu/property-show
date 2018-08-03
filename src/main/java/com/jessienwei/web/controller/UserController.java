@@ -9,13 +9,9 @@ import com.jessienwei.web.dto.UserDTO;
 import com.jessienwei.web.exception.ResourceNotFoundException;
 import com.jessienwei.web.repository.UserRepository;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+
+
+
 
 
 @RestController
@@ -52,8 +48,7 @@ public class UserController {
         user.setEmail(userDetails.getEmail());
         user.setPhone(userDetails.getPhone());
 
-        UserDTO updatedUser = userRepository.save(user);
-        return updatedUser;
+        return  userRepository.save(user);
     }
     // Delete a Note
     @DeleteMapping(path="/delete/{id}")
