@@ -10,10 +10,6 @@ import com.jessienwei.web.exception.ResourceNotFoundException;
 import com.jessienwei.web.repository.UserRepository;
 
 
-
-
-
-
 @RestController
 @RequestMapping(path="/user")
 public class UserController {
