@@ -96,4 +96,6 @@ public class UserDTO implements Serializable{
 		return "UserDTO [firstName=" + firstName + ", lastName=" + lastName + ", password=" + password + 
 			   ", email=" + email + ", phone=" + phone + "]";
 	}
+
 }
+
