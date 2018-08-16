@@ -7,4 +7,5 @@ import com.jessienwei.web.dto.UserDTO;
 @Repository
 public interface UserRepository extends JpaRepository<UserDTO, Long> {
 
+	UserDTO findByEmail(String email);
 }

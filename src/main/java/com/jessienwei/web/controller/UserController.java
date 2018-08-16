@@ -38,8 +38,8 @@ public class UserController {
 
         UserDTO user = userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User", "id", userId));
 
-        user.setFirstName(userDetails.getFirstName());
-        user.setLastName(userDetails.getLastName());
+        user.setUsername(userDetails.getUsername());
+        //user.setLastName(userDetails.getLastName());
         user.setPassword(userDetails.getPassword());
         user.setEmail(userDetails.getEmail());
         user.setPhone(userDetails.getPhone());
