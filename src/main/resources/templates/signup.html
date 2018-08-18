@@ -1,0 +1,142 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Real Estate Company Page</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--BootStrap CSS-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--jQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--BootStrap JS-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--Customized CSS-->
+    <style>
+        body {
+            font: 400 15px "Helvetica Neue", sans-serif;
+            line-height: 1.8;
+            color: #818181;
+        }
+        .navbar {
+            margin-bottom: 0;
+            background-color: #141d26;
+            border: 0;
+            font-size: 12px !important;
+            line-height: 1.42857143 !important;
+            letter-spacing: 4px;
+            border-radius: 0;
+            font-family: "Helvetica Neue", sans-serif;
+        }
+        .navbar li a, .navbar .navbar-brand {
+            color: #fff !important;
+        }
+        .navbar-nav li a:hover, .navbar-nav li.active a {
+            color: #f4511e !important;
+            background-color: #fff !important;
+        }
+        .navbar-default .navbar-toggle {
+            border-color: transparent;
+            color: #fff !important;
+        }
+        .jumbotron {
+            background-color: #1c94e0;
+            color: #fff;
+            padding: 100px 25px;
+            font-family: "Helvetica Neue", sans-serif;
+        }
+        .btn {
+            color: #fff;
+            font: 400 15px "Helvetica Neue", sans-serif;
+            width: 100px;
+        }
+    </style>
+    <!--jQuery Form Validator-->
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/theme-default.min.css"/>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#myPage">Logo</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#services">SERVICES</a></li>
+                <li><a href="#portfolio">PORTFOLIO</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="jumbotron text-center">
+    <p>Create your account</p>
+    <div class="row center-block" style="width: 400px;">
+        <form autocomplete="off" action="#" class="toggle-disabled" method="post"
+        	  th:action="@{/signup}" th:object="${signUpModel}">
+        	  
+        	<!-- Error message field -->
+        	<div th:if="${errorMessage}" class="alert alert-danger" th:text="${errorMessage}"></div>
+        	<div th:if="${confirmationMessage}" class="alert alert-success" th:text=${confirmationMessage}></div>
+        	
+        	<!-- Form fields -->
+            <div class="form-group text-left">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" placeholder="e.g. Will Smith" required
+                       data-validation="length alphanumeric" data-validation-length="3-12" 
+                       data-validation-error-msg="User name has to be an alphanumeric value (3-12 chars)"
+                       th:field="*{username}">
+            </div>
+            <div class="form-group text-left">
+                <label for="email">Email address:</label>
+                <input type="text" class="form-control" placeholder="e.g. abc@123.com" required 
+                	   data-validation="email" 
+                	   th:field="*{email}">
+            </div>
+            <div class="form-group  text-left">
+                <label for="phone">Phone number:</label>
+                <input type="text" class="form-control" maxlength="10" placeholder="e.g. 6130001111" required
+                       data-validation="custom" data-validation-regexp="\d{10}"
+                       th:field="*{phone}">
+            </div>
+            <div class="form-group  text-left">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" required 
+                	   data-validation="strength" data-validation-strength="2"
+                       data-validation-error-msg="Use a minimum 8 characters length password with uppercase characters, numbers and special symbols"
+                       th:field="*{password}">
+            </div>
+            <div class="form-group  text-left">
+                <label for="confpswd">Confirm Password:</label>
+                <input type="password" class="form-control" required id="confpswd" 
+                	   data-validation="confirmation" data-validation-error-msg="Password doesn't match" data-validation-confirm="password"
+                       th:field="*{passwordConfirmation}">
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-danger"/>
+            </div>
+        </form>
+    </div>
+</div>
+	
+	<script>
+	    $.validate({
+	        modules : 'security, toggleDisabled',
+	        disabledFormFilter : 'form.toggle-disabled',
+	        showErrorDialogs : true,
+	        lang: 'en'
+	    });
+	</script>
+
+</body>
+</html>

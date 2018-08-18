@@ -1,0 +1,86 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Real Estate Company Page</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--BootStrap CSS-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!--jQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--BootStrap JS-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--Customized CSS-->
+    <style>
+        body {
+            font: 400 15px "Helvetica Neue", sans-serif;
+            line-height: 1.8;
+            color: #818181;
+        }
+        .navbar {
+            margin-bottom: 0;
+            background-color: #141d26;
+            border: 0;
+            font-size: 12px !important;
+            line-height: 1.42857143 !important;
+            letter-spacing: 4px;
+            border-radius: 0;
+            font-family: "Helvetica Neue", sans-serif;
+        }
+        .navbar li a, .navbar .navbar-brand {
+            color: #fff !important;
+        }
+        .navbar-nav li a:hover, .navbar-nav li.active a {
+            color: #f4511e !important;
+            background-color: #fff !important;
+        }
+        .navbar-default .navbar-toggle {
+            border-color: transparent;
+            color: #fff !important;
+        }
+        .jumbotron {
+            background-color: #1c94e0;
+            color: #fff;
+            padding: 100px 25px;
+            font-family: "Helvetica Neue", sans-serif;
+        }
+        .btn {
+            color: #fff;
+            font: 400 15px "Helvetica Neue", sans-serif;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#myPage">Logo</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#services">SERVICES</a></li>
+                <li><a href="#portfolio">PORTFOLIO</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="jumbotron text-center">
+    <h1>Real Estate Company</h1>
+    <p>We Know the Neighborhood</p>
+    <p>Join us today.</p>
+    <a href="signup" class="btn" role="button" style="color:#ffffff;background-color:#141d26;border-radius: 30px;">Sign Up</a>
+    <a href="login" class="btn" role="button" style="color:#ffffff;background-color:#141d26;border-radius: 30px;">Log in</a>
+</div>
+</body>
+</html>
