@@ -1,114 +1,102 @@
 package com.jessienwei.web.dto;
 
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.persistence.*;
-
 import java.io.Serializable;
 import java.util.Date;
+
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotBlank;
+
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 @Entity
 @Table(name = "houses")
 @EntityListeners(AuditingEntityListener.class)
-public class HouseDTO implements Serializable{
+public class HouseDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private Long house_id;
-	
-	@Column(name="house_name")
-	@NotBlank
-	private String houseName;
-	
-	@Column(name="type_id")
-	@NotNull
-	private Integer typeId;
-	
-	@Column(name="area_id")
-	@NotNull
-	private Integer areaId;
-	
-	@Column(name="street")
-	@NotBlank
+
 	private String street;
-	
-	@Column(name="city")
-	@NotBlank
+
 	private String city;
-	
-	@Column(name="postcode")
-	@NotBlank
+
 	private String postCode;
-	
-	@Column(name="country")
-	@NotBlank
+
 	private String country;
-	
-	@Column(name="price")
-	@NotNull
+
 	private Integer price;
-	
-	@Column(name="size")
-	@NotNull
+
 	private Integer size;
-	
-	@Column(name="rooms")
-	@NotNull
+
 	private Integer rooms;
-	
-	@Column(name="bathrooms")
-	@NotNull
+
 	private Float bathRooms;
-	
-	@Column(name="garages")
-	@NotNull
+
 	private Integer garages;
-	
-	@Column(nullable = false, name="available_date")
-    @Temporal(TemporalType.TIMESTAMP)
+
 	private Date availableDate;
 
-	@Column(name="basement")
-	@NotBlank
 	private String basement;
-	
-	@Column(name="ac")
-	@NotNull
+
 	private Boolean ac;
-	
-	@Column(name="gasheat")
-	@NotNull
+
 	private Boolean gasHeat;
-	
-	@Column(name="fencedyard")
-	@NotNull
+
 	private Boolean fencedYard;
-	
-	@Column(name="washerdryer")
-	@NotNull
+
 	private Boolean washerDryer;
-	
-	@Column(name="deck")
-	@NotNull
+
 	private Boolean deck;
-	
-	@Column(name="balcony")
-	@NotNull
+
 	private Boolean balcony;
-	
-	@Column(name="storage")
-	@NotNull
+
 	private Boolean storage;
-	
-	@Column(name="introduction")
+
 	private String introduction;
 
+	private String houseName;
 
+	private TypeDTO type;
+
+	private AreaDTO area;
+
+	private UserDTO user;
+
+
+
+
+	@OneToOne
+	@JoinColumn(name = "user_id")
+	//@NotBlank
+	public UserDTO getUser() {
+		return user;
+	}
+
+	public void setUser(UserDTO user) {
+		this.user = user;
+	}
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getHouse_id() {
 		return house_id;
 	}
@@ -117,6 +105,31 @@ public class HouseDTO implements Serializable{
 		this.house_id = house_id;
 	}
 
+	@JsonIgnore
+	@ManyToOne(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
+	@JoinColumn(name = "type_id")
+	public TypeDTO getType() {
+		return type;
+	}
+
+	public void setType(TypeDTO type) {
+		this.type = type;
+	}
+
+	@JsonIgnore
+	@ManyToOne(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
+	@JoinColumn(name = "area_id")
+
+	public AreaDTO getArea() {
+		return area;
+	}
+
+	public void setArea(AreaDTO area) {
+		this.area = area;
+	}
+
+
+	@NotBlank
 	public String getHouseName() {
 		return houseName;
 	}
@@ -125,22 +138,7 @@ public class HouseDTO implements Serializable{
 		this.houseName = houseName;
 	}
 
-	public Integer getTypeId() {
-		return typeId;
-	}
-
-	public void setTypeId(Integer typeId) {
-		this.typeId = typeId;
-	}
-
-	public Integer getAreaId() {
-		return areaId;
-	}
-
-	public void setAreaId(Integer areaId) {
-		this.areaId = areaId;
-	}
-
+	@NotBlank
 	public String getStreet() {
 		return street;
 	}
@@ -149,6 +147,7 @@ public class HouseDTO implements Serializable{
 		this.street = street;
 	}
 
+	@NotBlank
 	public String getCity() {
 		return city;
 	}
@@ -165,6 +164,7 @@ public class HouseDTO implements Serializable{
 		this.postCode = postCode;
 	}
 
+	@NotBlank
 	public String getCountry() {
 		return country;
 	}
@@ -213,6 +213,8 @@ public class HouseDTO implements Serializable{
 		this.garages = garages;
 	}
 
+	@Column(nullable = false, name = "available_date")
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getAvailableDate() {
 		return availableDate;
 	}
@@ -295,14 +297,19 @@ public class HouseDTO implements Serializable{
 
 	@Override
 	public String toString() {
-		return "HouseDTO [house_id=" + house_id + ", houseName=" + houseName + ", typeId=" + typeId + ", areaId="
-				+ areaId + ", street=" + street + ", city=" + city + ", postCode=" + postCode + ", country=" + country
-				+ ", price=" + price + ", size=" + size + ", rooms=" + rooms + ", bathRooms=" + bathRooms + ", garages="
-				+ garages + ", availableDate=" + availableDate + ", basement=" + basement + ", ac=" + ac + ", gasHeat="
-				+ gasHeat + ", fencedYard=" + fencedYard + ", washerDryer=" + washerDryer + ", deck=" + deck
-				+ ", balcony=" + balcony + ", storage=" + storage + ", introduction=" + introduction + "]";
+		return "HouseDTO [house_id=" + house_id + ", street=" + street + ", city=" + city + ", postCode=" + postCode
+				+ ", country=" + country + ", price=" + price + ", size=" + size + ", rooms=" + rooms + ", bathRooms="
+				+ bathRooms + ", garages=" + garages + ", availableDate=" + availableDate + ", basement=" + basement
+				+ ", ac=" + ac + ", gasHeat=" + gasHeat + ", fencedYard=" + fencedYard + ", washerDryer=" + washerDryer
+				+ ", deck=" + deck + ", balcony=" + balcony + ", storage=" + storage + ", introduction=" + introduction
+				+ ", houseName=" + houseName + ", type=" + type + ", area=" + area + "]";
 	}
-	
-	
-}
 
+
+
+
+
+
+
+
+}

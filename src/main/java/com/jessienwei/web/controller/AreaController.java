@@ -1,6 +1,8 @@
 package com.jessienwei.web.controller;
 
 import java.util.List;
+import java.util.Set;
+
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +34,11 @@ public class AreaController {
 
 		return ResponseEntity.ok().build();*/
 		return areaRepository.save(area);
+	}
+	//Create a new set of areas
+	@PostMapping(path = "/adds")
+	public void creatAreas(@Valid @RequestBody Set<AreaDTO> areas){
+		areas.stream().forEach(a -> createArea(a));
 	}
 
 	//Get a single area by id

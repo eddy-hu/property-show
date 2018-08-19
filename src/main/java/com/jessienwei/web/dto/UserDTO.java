@@ -9,93 +9,123 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.util.Date;
-
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
 @EntityListeners(AuditingEntityListener.class)
-@JsonIgnoreProperties(value = {"createdAt", "updatedAt"}, allowGetters = true)
-public class UserDTO implements Serializable{
+@JsonIgnoreProperties(value = { "createdAt", "updatedAt" }, allowGetters = true)
+public class UserDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long userId;
-	
-	@Column(name="fname")
-	@NotBlank
-	private String firstName;
-	
-	@Column(name="lname")
-	@NotBlank
-	private String lastName;
-	
-	@Column(name="pswd")
-	@NotBlank
+	private Long user_id;
+
+	private String userName;
+
 	private String password;
-	
-	@Column(name="email")
+
+	private String phone;
+
 	private String email;
 	
-	@Column(name="phone")
-	private String phone;
+
+	private Set<HouseDTO> houses = new HashSet<HouseDTO>();
 	
-	@Column(nullable = false, updatable = false, name="created_at")
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
-    private Date createdAt;
-
-    @Column(nullable = false, name="updated_at")
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate
-    private Date updatedAt;
-
-	public String getFirstName() {
-		return firstName;
+	private RoleDTO role_id;
+	
+	
+	@ManyToOne
+	@JoinColumn(name = "role_id")
+	public RoleDTO getRole_id() {
+		return role_id;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setRole_id(RoleDTO role_id) {
+		this.role_id = role_id;
 	}
 
-	public String getLastName() {
-		return lastName;
+	@Column(nullable = false, updatable = false, name = "created_at")
+	@Temporal(TemporalType.TIMESTAMP)
+	@CreatedDate
+	private Date createdAt;
+
+	@Column(nullable = false, name = "updated_at")
+	@Temporal(TemporalType.TIMESTAMP)
+	@LastModifiedDate
+	private Date updatedAt;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public Long getUserId() {
+		return user_id;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
+	public void setUserId(Long userId) {
+		this.user_id = userId;
 	}
 
 	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	@NotBlank
+	public String getPassword() {
+		return password;
 	}
 
 	public String getPhone() {
 		return phone;
 	}
 
+	@NotBlank
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	
-	@Override
-	public String toString() {
-		return "UserDTO [firstName=" + firstName + ", lastName=" + lastName + ", password=" + password + 
-			   ", email=" + email + ", phone=" + phone + "]";
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
-}
+	@ManyToMany
+	@JoinTable(name = "favorite",
+		joinColumns = {@JoinColumn(name = "user_id")},
+		inverseJoinColumns = {@JoinColumn(name = "house_id")}
+			)
+	public Set<HouseDTO> getHouses() {
+		return houses;
+	}
 
+	public void setHouses(Set<HouseDTO> houses) {
+		this.houses = houses;
+	}
+
+	@Override
+	public String toString() {
+		String favoriteHouse = "";
+		for(HouseDTO h : houses){
+			favoriteHouse +=h.getHouse_id();
+		}
+		return "UserDTO [user_id=" + user_id + ", userName=" + userName + ", password=" + password + ", phone=" + phone
+				+ ", email=" + email + ", houses=" + houses.size() + ": " +favoriteHouse + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
+				+ "]"; 
+	}
+
+
+
+
+
+}
