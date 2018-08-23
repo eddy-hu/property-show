@@ -17,21 +17,12 @@ import com.jessienwei.web.service.UserService;
 @Controller
 public class RegisterController {
 
-	private UserService userService;
-
 	@Autowired
-	public RegisterController(UserService userService) {
-		this.userService = userService;
-	}
-
-	@GetMapping(path="/")
-    public String showIndex() {
-        return "index";
-    }
+	private UserService userService;
 	
 	@GetMapping(path="/signup")
-    public ModelAndView showSignUp(ModelAndView modelAndView, SignUpModel model) {
-		//modelAndView.addObject("signUpModel", model);
+    public ModelAndView showSignUp(ModelAndView modelAndView) {
+		modelAndView.addObject("signUpModel", new SignUpModel());
 		modelAndView.setViewName("signup");
 		return modelAndView;
     }
@@ -39,16 +30,19 @@ public class RegisterController {
 	@PostMapping(path="/signup")
 	public ModelAndView processSignUpForm(ModelAndView modelAndView, @Valid SignUpModel model, BindingResult bindingResult, HttpServletRequest request) {
 		// Lookup user in database by e-mail
-		UserDTO userExists = userService.findByEmail(model.getEmail());
+		UserDTO userExists = userService.findUserByEmail(model.getEmail());
 		// If exists, send error message to the view
 		if (userExists != null) {
 			modelAndView.addObject("errorMessage", "Oops! There is already a user registered with the email provided.");
 			modelAndView.setViewName("signup");
 			bindingResult.reject("email");  //equals bindingResult.hasErrors()
-		} else { 
-			// create user and send confirmation e-mail
+		} 
+		if (bindingResult.hasErrors()) {
+			modelAndView.setViewName("signup");
+		}else { 
+			// create user in DB
 			UserDTO user = new UserDTO();
-			user.setUsername(model.getUsername());
+			user.setName(model.getUsername());
 			user.setEmail(model.getEmail());
 			user.setPhone(model.getPhone());
 			user.setPassword(model.getPassword());
@@ -57,13 +51,10 @@ public class RegisterController {
 		    userService.saveUser(user);				
 				
 			modelAndView.addObject("confirmationMessage", "Congras! Registration completed successfully");
+			modelAndView.addObject("signUpModel", new SignUpModel());
 			modelAndView.setViewName("signup");
 		}		
 		return modelAndView;
-	}
+	}	
 	
-	@GetMapping(path="/login")
-    public String showLogIn() {
-        return "login";
-    }
 }

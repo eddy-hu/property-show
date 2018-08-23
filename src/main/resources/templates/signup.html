@@ -65,7 +65,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#myPage">Logo</a>
+            <a class="navbar-brand" href="#" th:href="@{/index}">Logo</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
@@ -95,6 +95,7 @@
                 <input type="text" class="form-control" placeholder="e.g. Will Smith" required
                        data-validation="length alphanumeric" data-validation-length="3-12" 
                        data-validation-error-msg="User name has to be an alphanumeric value (3-12 chars)"
+                       data-validation-ignore=" "
                        th:field="*{username}">
             </div>
             <div class="form-group text-left">
