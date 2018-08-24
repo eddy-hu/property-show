@@ -1,14 +1,13 @@
 package com.jessienwei.web.dto;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -20,10 +19,10 @@ public class RoleDTO {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "role_id")
 	private Long id;
-	
+
 	@Column(name = "role_type")
 	private String type;
-	
+
 	@OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<UserDTO> users = new ArrayList<>();
 
@@ -40,6 +39,7 @@ public class RoleDTO {
 	}
 
 	public void setType(String type) {
+
 		this.type = type;
 	}
 
@@ -47,4 +47,5 @@ public class RoleDTO {
 	public String toString() {
 		return "type= " + type;
 	}
+
 }

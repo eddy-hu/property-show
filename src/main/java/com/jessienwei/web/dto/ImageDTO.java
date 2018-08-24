@@ -8,59 +8,77 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-
 @Entity
-@Table(name = "image")
+@Table(name = "images")
 @EntityListeners(AuditingEntityListener.class)
-public class ImageDTO implements Serializable{
+public class ImageDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column(name = "house_id")
-	@NotNull
-	private Long house_id;
-	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	private Long imageId;
+
 	@Column(name = "image_name")
 	@NotBlank
 	private String image_name;
-	
+
+	private HouseDTO houseDTO;
+
+	/*
+	 * @Id
+	 *
+	 * @Column(name = "house_id")
+	 *
+	 * @NotNull
+	 */
+	/* private Long house_id; */
+
+
+	@ManyToOne
+	public HouseDTO getHouseDTO() {
+		return houseDTO;
+	}
+
+	public void setHouseDTO(HouseDTO houseDTO) {
+		this.houseDTO = houseDTO;
+	}
+
 	@Column(name = "image_path")
 	@NotBlank
 	private String image_path;
 
-	public Long getHouse_id() {
-		return house_id;
-	}
-
-	public void setHouse_id(Long house_id) {
-		this.house_id = house_id;
-	}
-
 	public String getImage_name() {
 		return image_name;
-	}
-
-	public void setImage_name(String image_name) {
-		this.image_name = image_name;
 	}
 
 	public String getImage_path() {
 		return image_path;
 	}
 
+	@Id
+	@GeneratedValue
+	public Long getImageId() {
+		return imageId;
+	}
+
+	public void setImage_name(String image_name) {
+		this.image_name = image_name;
+	}
+
 	public void setImage_path(String image_path) {
 		this.image_path = image_path;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public void setImageId(Long imageId) {
+		this.imageId = imageId;
 	}
 
-	@Override
-	public String toString() {
-		return "ImageDTO [house_id=" + house_id + ", image_name=" + image_name + ", image_path=" + image_path + "]";
-	}
-	
-
+	/*
+	 * @Override public String toString() { return "ImageDTO [house_id=" +
+	 * house_id + ", image_name=" + image_name + ", image_path=" + image_path +
+	 * "]"; }
+	 */
 
 }

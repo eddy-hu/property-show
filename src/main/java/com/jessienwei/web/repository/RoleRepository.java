@@ -7,7 +7,8 @@ import com.jessienwei.web.dto.RoleDTO;
 
 @Repository("roleRepository")
 public interface RoleRepository extends JpaRepository<RoleDTO, Long>{
-	
+
 	RoleDTO findByType(String type);
+
 
 }

@@ -5,12 +5,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Set;
 
 import com.jessienwei.web.dto.HouseDTO;
-import com.jessienwei.web.dto.UserDTO;
 import com.jessienwei.web.exception.ResourceNotFoundException;
 import com.jessienwei.web.repository.HouseRepository;
-import com.jessienwei.web.repository.UserRepository;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,6 +33,12 @@ public class HouseController {
     public HouseDTO addHouse(@Valid @RequestBody HouseDTO house) {
 		return houseRepository.save(house);
     }
+    //Create a new Set of houses
+    @PostMapping(path="/adds")
+    public void addHouses(@Valid @RequestBody Set<HouseDTO> houses) {
+		houses.stream().forEach(h -> addHouse(h));
+    }
+
     // Get a Single house
     @GetMapping(path="/{id}")
     public HouseDTO getHouseById(@PathVariable(value = "id") Long houseId) {
@@ -46,8 +51,8 @@ public class HouseController {
     	HouseDTO house = houseRepository.findById(houseId).orElseThrow(() -> new ResourceNotFoundException("House", "id", houseId));
 
     	house.setHouseName(houseDetails.getHouseName());
-    	house.setTypeId(houseDetails.getTypeId());
-    	house.setAreaId(houseDetails.getAreaId());
+    	house.setType(houseDetails.getType());
+    	house.setArea(houseDetails.getArea());
     	house.setStreet(houseDetails.getStreet());
     	house.setCity(houseDetails.getCity());
     	house.setPostCode(houseDetails.getPostCode());
@@ -65,13 +70,14 @@ public class HouseController {
     	house.setWasherDryer(houseDetails.getWasherDryer());
     	house.setDeck(houseDetails.getDeck());
     	house.setBalcony(houseDetails.getBalcony());
-    	house.setStorage(houseDetails.getStorage());    	
+    	house.setStorage(houseDetails.getStorage());
     	house.setIntroduction(houseDetails.getIntroduction());
-    	
+    	house.setUser(houseDetails.getUser());
+
         HouseDTO updatedHouse = houseRepository.save(house);
         return updatedHouse;
-        
-        
+
+
     }
     // Delete a house
     @DeleteMapping(path="/delete/{id}")
