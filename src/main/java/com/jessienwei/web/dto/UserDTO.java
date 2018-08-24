@@ -51,6 +51,9 @@ public class UserDTO {
 	@JoinColumn(name = "role_id")
 	private RoleDTO role;
 
+	@ManyToMany
+	@JoinTable(name = "favorite", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "house_id") })
 	private Set<HouseDTO> houses;
 
 	public Long getId() {
@@ -70,9 +73,6 @@ public class UserDTO {
 
 	}
 
-	@ManyToMany
-	@JoinTable(name = "favorite", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "house_id") })
 	public Set<HouseDTO> getHouses() {
 		return houses;
 	}
