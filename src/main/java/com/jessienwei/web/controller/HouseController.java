@@ -12,13 +12,10 @@ import com.jessienwei.web.exception.ResourceNotFoundException;
 import com.jessienwei.web.repository.HouseRepository;
 import com.jessienwei.web.repository.UserRepository;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
 
 @RestController
 @RequestMapping(path="/house")
+@CrossOrigin(origins = "http://localhost:4200")
 public class HouseController {
 
     @Autowired
