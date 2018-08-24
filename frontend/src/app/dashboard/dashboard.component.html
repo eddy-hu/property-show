@@ -1,0 +1,9 @@
+<h3>Top Houses</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let house of houses" class="col-1-4"
+    routerLink="/detail/{{house.id}}">
+    <div class="module house">
+      <h4>{{house.houseName}}</h4>
+    </div>
+  </a>
+</div>

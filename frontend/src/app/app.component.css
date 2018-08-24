@@ -1,0 +1,37 @@
+body {
+    font: 400 15px "Helvetica Neue", sans-serif;
+    line-height: 1.8;
+    color: #818181;
+}
+.navbar {
+    margin-bottom: 0;
+    background-color: #141d26;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+    font-family: "Helvetica Neue", sans-serif;
+}
+.navbar li a, .navbar .navbar-brand {
+    color: #fff !important;
+}
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #f4511e !important;
+    background-color: #fff !important;
+}
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+}
+.jumbotron {
+    background-color: #1c94e0;
+    color: #fff;
+    padding: 100px 25px;
+    font-family: "Helvetica Neue", sans-serif;
+}
+.btn {
+    color: #fff;
+    font: 400 15px "Helvetica Neue", sans-serif;
+    width: 100px;
+}

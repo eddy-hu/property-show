@@ -1,0 +1,94 @@
+<body>
+<div *ngIf="house">
+<div class="container">
+		<div class="card">
+			<div class="container-fliud">
+				<div class="wrapper row">
+					<div class="preview col-md-6">
+						
+						<div class="preview-pic tab-content">
+						  <div class="tab-pane active" id="pic-1"><img src="https://cdn.realtor.ca/listing/TS636658257671070000/reb76/highres/5/1113745_1.jpg" /></div>
+						  <div class="tab-pane" id="pic-2"><img src="https://cdn.realtor.ca/listing/TS636658257671930000/reb76/highres/5/1113745_2.jpg" /></div>
+						  <div class="tab-pane" id="pic-3"><img src="https://cdn.realtor.ca/listing/TS636658257672930000/reb76/highres/5/1113745_6.jpg" /></div>
+						  <div class="tab-pane" id="pic-4"><img src="https://cdn.realtor.ca/listing/TS636658257673070000/reb76/highres/5/1113745_8.jpg" /></div>
+						  <div class="tab-pane" id="pic-5"><img src="https://cdn.realtor.ca/listing/TS636658257671630000/reb76/highres/5/1113745_16.jpg" /></div>
+						</div>
+						<ul class="preview-thumbnail nav nav-tabs">
+						  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="https://cdn.realtor.ca/listing/TS636658257671070000/reb76/highres/5/1113745_1.jpg" /></a></li>
+						  <li><a data-target="#pic-2" data-toggle="tab"><img src="https://cdn.realtor.ca/listing/TS636658257671930000/reb76/highres/5/1113745_2.jpg" /></a></li>
+						  <li><a data-target="#pic-3" data-toggle="tab"><img src="https://cdn.realtor.ca/listing/TS636658257672930000/reb76/highres/5/1113745_6.jpg" /></a></li>
+						  <li><a data-target="#pic-4" data-toggle="tab"><img src="https://cdn.realtor.ca/listing/TS636658257673070000/reb76/highres/5/1113745_8.jpg" /></a></li>
+						  <li><a data-target="#pic-5" data-toggle="tab"><img src="https://cdn.realtor.ca/listing/TS636658257671630000/reb76/highres/5/1113745_16.jpg" /></a></li>
+						</ul>
+						
+					</div>
+					<div class="details col-md-6">
+						<h3 class="house-title">{{house.houseName}}</h3>
+						<div class="rating">
+							<div class="stars">
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+							</div>
+							<span class="review-no">41 reviews</span>
+						</div>
+						<p class="product-description">{{house.introduction}}</p>
+						<h4 class="price">current price: <span>{{house.price | currency}}</span></h4>
+						<p class="vote"><strong>91%</strong> of buyers liked this house! <strong>(87 votes)</strong></p>
+						<h5 class="sizes">sizes:
+							<span class="size" >{{house.size}} ft</span>
+						</h5>
+						
+						<h5 class="rooms">Rooms:
+							<span class="rooms-num">{{house.rooms}}</span>
+						</h5>
+						<div class="action">
+							<button class="add-to-cart btn btn-default" type="button">BUY THIS HOUSE</button>
+							&nbsp;
+							<button class="like btn btn-default" type="button">ADD TO FAVORITES</button>
+							<p> </p>
+							<button  class="goback" (click)="goBack()">go back</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="house-detail-info"  align="center">
+<table class="table">
+		<thead>
+		  <tr>
+			<th scope="col">#</th>
+			<th scope="col">First</th>
+			<th scope="col">Last</th>
+			<th scope="col">Handle</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr>
+			<th scope="row">1</th>
+			<td>Mark</td>
+			<td>Otto</td>
+			<td>@mdo</td>
+		  </tr>
+		  <tr>
+			<th scope="row">2</th>
+			<td>Jacob</td>
+			<td>Thornton</td>
+			<td>@fat</td>
+		  </tr>
+		  <tr>
+			<th scope="row">3</th>
+			<td>Larry</td>
+			<td>the Bird</td>
+			<td>@twitter</td>
+		  </tr>
+		</tbody>
+	  </table>
+	</div>
+
+</body>

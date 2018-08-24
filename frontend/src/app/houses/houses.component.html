@@ -1,0 +1,35 @@
+
+<div class="houses-table" align="center">
+  <table class="table">
+    <thead class="table table-striped">
+
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">Street</th>
+            <th scope="col">City</th>
+            <th scope="col">PostCode</th>
+            <th scope="col">Available Date</th>
+            <th scope="col">Introduction</th>
+            <th scope="col">Deitail</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let house of houses">
+            <th><img src="https://cdn.realtor.ca/listing/TS636693680845000000/reb76/highres/0/1121730_1.jpg" alt="houseImg" width="100px"></th>
+            <th scope="row">{{house.house_id}}</th>
+            <td>{{house.houseName}}</td>
+            <td>{{house.typeId}}</td>
+            <td>{{house.street}}</td>
+            <td>{{house.city}}</td>
+            <td>{{house.postCode}}</td>
+            <td>{{house.availableDate | date}}</td>
+            <td>{{house.introduction}}</td>
+            <td><a routerLink="/detail/{{house.house_id}}">Detail</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      </div>
