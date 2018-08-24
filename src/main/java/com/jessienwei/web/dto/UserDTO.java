@@ -1,110 +1,78 @@
 package com.jessienwei.web.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import javax.validation.constraints.NotBlank;
-import javax.persistence.*;
-
-import java.io.Serializable;
-import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+import org.springframework.data.annotation.Transient;
 
 @Entity
 @Table(name = "user")
-@EntityListeners(AuditingEntityListener.class)
-@JsonIgnoreProperties(value = { "createdAt", "updatedAt" }, allowGetters = true)
-public class UserDTO implements Serializable {
-
-	private static final long serialVersionUID = 1L;
-
-	private Long user_id;
-
-	private String userName;
-
-	private String password;
-
-	private String phone;
-
-	private String email;
-	
-
-	private Set<HouseDTO> houses = new HashSet<HouseDTO>();
-	
-	private RoleDTO role_id;
-	
-	
-	@ManyToOne
-	@JoinColumn(name = "role_id")
-	public RoleDTO getRole_id() {
-		return role_id;
-	}
-
-	public void setRole_id(RoleDTO role_id) {
-		this.role_id = role_id;
-	}
-
-	@Column(nullable = false, updatable = false, name = "created_at")
-	@Temporal(TemporalType.TIMESTAMP)
-	@CreatedDate
-	private Date createdAt;
-
-	@Column(nullable = false, name = "updated_at")
-	@Temporal(TemporalType.TIMESTAMP)
-	@LastModifiedDate
-	private Date updatedAt;
+public class UserDTO {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long getUserId() {
-		return user_id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "user_id")
+	private Long id;
+
+	@Column(name = "user_name")
+	@NotEmpty(message = "Please provide your name")
+	private String name;
+
+	@Column(name = "email", nullable = false, unique = true)
+	@Email(message = "Please provide a valid Email")
+	@NotEmpty(message = "Please provide an Email")
+	private String email;
+
+	@Column(name = "phone")
+	@NotEmpty(message = "Please provide your phone number")
+	private String phone;
+
+	@Column(name = "password")
+	@Length(min = 6, message = "Your password must have at least 6 characters")
+	@NotEmpty(message = "Please provide a valid password")
+	@Transient
+	private String password;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "role_id")
+	private RoleDTO role;
+
+	private Set<HouseDTO> houses;
+
+	public Long getId() {
+		return id;
 	}
 
-	public void setUserId(Long userId) {
-		this.user_id = userId;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getName() {
+		return name;
 	}
 
-	@NotBlank
-	public String getPassword() {
-		return password;
-	}
+	public void setName(String name) {
+		this.name = name;
 
-	public String getPhone() {
-		return phone;
-	}
-
-	@NotBlank
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
 	}
 
 	@ManyToMany
-	@JoinTable(name = "favorite",
-		joinColumns = {@JoinColumn(name = "user_id")},
-		inverseJoinColumns = {@JoinColumn(name = "house_id")}
-			)
+	@JoinTable(name = "favorite", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "house_id") })
 	public Set<HouseDTO> getHouses() {
 		return houses;
 	}
@@ -113,19 +81,46 @@ public class UserDTO implements Serializable {
 		this.houses = houses;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public RoleDTO getRole() {
+		return role;
+	}
+
+	public void setRole(RoleDTO role) {
+		this.role = role;
+	}
+
 	@Override
 	public String toString() {
 		String favoriteHouse = "";
-		for(HouseDTO h : houses){
-			favoriteHouse +=h.getHouse_id();
+		for (HouseDTO h : houses) {
+			favoriteHouse += h.getHouse_id();
 		}
-		return "UserDTO [user_id=" + user_id + ", userName=" + userName + ", password=" + password + ", phone=" + phone
-				+ ", email=" + email + ", houses=" + houses.size() + ": " +favoriteHouse + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
-				+ "]"; 
+		return "UserDTO [user_id=" + id + ", userName=" + name + ", password=" + password + ", phone=" + phone
+				+ ", email=" + email + ", houses=" + houses.size() + ": " + favoriteHouse + "]";
 	}
 
+	public String getEmail() {
+		return email;
+	}
 
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
+	public String getPhone() {
+		return phone;
+	}
 
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
 }

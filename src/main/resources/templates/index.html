@@ -75,33 +75,12 @@
     </div>
 </nav>
 
-
 <div class="jumbotron text-center">
-    <p>Login to your account</p>
-    <div class="row center-block" style="width: 400px;">
-        <form autocomplete="off" action="#" method="post"
-        	  th:action="@{/login}">
-        	  
-        	<!-- Error message field -->
-        	<div align="center" th:if="${param.error}">
-				<p style="font-size: 20; color: #FF1C19;">Email or Password invalid, please verify</p>
-			</div>
-        	
-        	<!-- Form fields -->
-            <div class="form-group text-left">
-                <label for="email">Email address:</label>
-                <input type="text" class="form-control" placeholder="e.g. abc@123.com" required name="email">
-            </div>
-            <div class="form-group  text-left">
-                <label for="password">Password:</label>
-                <input type="password" class="form-control" required name="password">
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-danger" value="Login"/>
-            </div>
-        </form>
-    </div>
+    <h1>Real Estate Company</h1>
+    <p>We Know the Neighborhood</p>
+    <p>Join us today.</p>
+    <a href="signup" class="btn" role="button" style="color:#ffffff;background-color:#141d26;border-radius: 30px;">Sign Up</a>
+    <a href="login" class="btn" role="button" style="color:#ffffff;background-color:#141d26;border-radius: 30px;">Log in</a>
 </div>
-
 </body>
 </html>
