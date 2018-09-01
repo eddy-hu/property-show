@@ -15,6 +15,8 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { ServicesComponent } from './services/services.component';
 import { LoginComponent } from './login/login.component';
+import { HouseAddComponent } from './house-add/house-add.component';
+import { HouseEditComponent } from './house-edit/house-edit.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { LoginComponent } from './login/login.component';
     AboutComponent,
     ContactComponent,
     ServicesComponent,
-    LoginComponent
+    LoginComponent,
+    HouseAddComponent,
+    HouseEditComponent
   ],
   imports: [
     BrowserModule,

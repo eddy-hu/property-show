@@ -8,9 +8,12 @@ import { House } from './house';
 
 @Injectable({
   providedIn: 'root'
+
 })
 export class HouseService {
   private houseUrl = 'http://127.0.0.1:8080/house'; 
+  houseSample: House;
+ 
   constructor(private http: HttpClient,
     private messageService: MessageService) { }
 
@@ -27,6 +30,44 @@ export class HouseService {
       return this.http.get<House>(url).pipe( 
         tap(_ => this.log(`fetched house id=${id}`)),
       catchError(this.handleError<House>(`getHouse id=${id}`))
+    );
+  }
+
+  addHouse (house: House): Observable<House> {
+
+    var obj ={
+      "houseName": "TEST ADD HOUSE",
+      "typeId": 1,
+      "areaId": 2,
+      "street": "WHERNSIDE TERRACE",
+      "city": "Ottawa",
+      "postCode": "K2W0C6",
+      "country": "Canada",
+      "price": 439000,
+      "size": 105,
+      "rooms": 4,
+      "bathRooms": 2,
+      "garages": 1,
+      "availableDate": "2018-08-29",
+      "basement": "2 bedrooms",
+      "ac": true,
+      "gasHeat": true,
+      "fencedYard": true,
+      "washerDryer": true,
+      "deck": true,
+      "balcony": true,
+      "storage": true,
+      "introduction": "Stunning, shows like a model. Move in and do nothing! Desirable Morgan's Grant. Fully fenced. No rear neighbours",
+      "userId": 1
+    };
+
+    const url = `${this.houseUrl}/add`;
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    return this.http.post<House>(url, obj, httpOptions).pipe(
+      tap((house: House) => this.log(`added house w/ id=${house.house_id}`)),
+      catchError(this.handleError<House>('addHouse'))
     );
   }
 /*
